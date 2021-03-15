@@ -1,8 +1,8 @@
 name: release Unblockneteasemusic
 on:
   push:
-    tags:
-      - "0*"
+    branchs:
+      - custom
 jobs:
   build_luci:
     runs-on: ubuntu-latest
@@ -10,7 +10,7 @@ jobs:
       - name: checkout
         uses: actions/checkout@v2
         with:
-          ref: master
+          ref: custom
           fetch-depth: 0
           lfs: true
       - name: set git identity
@@ -121,6 +121,6 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: bin/releaseUpload/*
           file_glob: true
-          tag: ${{ github.ref }}
+          tag: $(TZ=UTC-8 date "+%Y-%m-%d %H:%M:%S")
           overwrite: true
           body: "[bot] automatically publish packages compiled with the latest source code"

@@ -121,6 +121,6 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: bin/releaseUpload/*
           file_glob: true
-          tag: $(TZ=UTC-8 date "+%Y-%m-%d %H:%M:%S")
+          tag: ${{ github.run_id }}
           overwrite: true
           body: "[bot] automatically publish packages compiled with the latest source code"

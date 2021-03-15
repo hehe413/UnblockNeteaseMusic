@@ -20,7 +20,7 @@ var (
 	CertFile         = flag.String("c", "./server.crt", "specify server cert,such as : \"server.crt\"")
 	KeyFile          = flag.String("k", "./server.key", "specify server cert key ,such as : \"server.key\"")
 	LogFile          = flag.String("l", "", "specify log file ,such as : \"/var/log/unblockNeteaseMusic.log\"")
-	Mode             = flag.Int("m", 1, "specify running mode（1:hosts） ,such as : \"1\"")
+	Mode             = flag.Int("m", 3, "specify running mode（1:hosts;2:uwp;3:desktop） ,such as : \"3\"")
 	V                = flag.Bool("v", false, "display version info")
 	EndPoint         = flag.Bool("e", false, "replace song url")
 	ForceBestQuality = flag.Bool("b", false, "force the best music quality")

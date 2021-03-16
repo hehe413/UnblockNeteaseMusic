@@ -226,8 +226,9 @@ func getSongFromAllSource(key common.SearchSong, ch chan *common.Song) []*common
 	var songs []*common.Song
 	sum := 0
 	for _, p := range providers {
+		tmp_p := p
 		go utils.PanicWrapper(func() {
-			ch <- calculateSongInfo(p.ParseSong(key))
+			ch <- calculateSongInfo(tmp_p.ParseSong(key))
 		})
 		sum++
 	}
@@ -252,8 +253,9 @@ func SearchSongFromAllSource(key common.SearchSong) []*common.Song {
 	ch := make(chan []*common.Song)
 	sum := 0
 	for _, p := range providers {
+		tmp_p := p
 		go utils.PanicWrapper(func() {
-			ch <- p.SearchSong(key)
+			ch <- tmp_p.SearchSong(key)
 		})
 		sum++
 	}

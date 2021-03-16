@@ -99,6 +99,12 @@ func (m *Migu) SearchSong(song common.SearchSong) (songs []*common.Song) {
 							if strings.Contains(songName, "伴奏") && !strings.Contains(song.Keyword, "伴奏") {
 								continue
 							}
+							if strings.Contains(songName, "片段") && !strings.Contains(song.Keyword, "片段") {
+								continue
+							}
+							if strings.Contains(songName, "DJ") && !strings.Contains(song.Keyword, "DJ") {
+								continue
+							}
 							var songNameSores float32 = 0.0
 							if songNameOk {
 								//songNameKeys := utils.ParseSongNameKeyWord(songName)
@@ -122,9 +128,10 @@ func (m *Migu) SearchSong(song common.SearchSong) (songs []*common.Song) {
 						} else if song.OrderBy == common.PlatformDefault {
 
 						}
-
-						songs = append(songs, songResult)
-
+						if songResult.MatchScore != 0 {
+							songs = append(songs, songResult)
+						}
+						// songs = append(songs, songResult)
 					}
 
 				}

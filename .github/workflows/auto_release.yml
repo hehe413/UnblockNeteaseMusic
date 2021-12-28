@@ -123,6 +123,6 @@ jobs:
           repo_token: ${{ secrets.GITHUB_TOKEN }}
           file: bin/releaseUpload/*
           file_glob: true
-          tag: ${{ steps.date.outputs.date }}
+          tag: ${{ github.ref }}
           overwrite: true
           body: "[bot] automatically publish packages compiled with the latest source code"
